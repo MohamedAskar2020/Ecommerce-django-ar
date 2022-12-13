@@ -19,7 +19,11 @@
       type="text/css"
     />
     <link rel="shortcut icon" href="{% static 'images/4085730.png' %}" />
-    <title>Khyial Store</title>
+    {% if title %}
+    <title>الخيال ستور | {{title}}</title>
+    {% else %}
+    <title>الخيال ستور</title>
+    {% endif %}
   </head>
   <body>
     <!--Navebar Start -->
