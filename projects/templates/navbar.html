@@ -1,0 +1,52 @@
+{% load static %}
+<header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <img src="{% static 'images/khyl.png' %}" style="width:50px; height:50px" alt="شعار">
+            <a class="navbar-brand" href="#">الخيال</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">الرئيسية <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    أقسام
+                    </a>
+                    <div class="dropdown-menu text-right" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">العناية بالبشرة</a>
+                    <a class="dropdown-item" href="#">العناية بالشعر</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">مستحضرات التجميل</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">من نحن</a>
+                </li>
+                </ul>
+                </div>
+                <div class="my-2 my-lg-0">
+                    <button type="button" class="btn btn-outline-danger me-2">تسجيل الدخول</button>
+                    <button type="button" class="btn btn-warning">تسجيل</button>
+                </div> 
+                {% comment %} <div class="dropdown my-2 my-lg-0 mr-5">
+                    <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+                    </a>
+                    <ul class="dropdown-menu text-left  text-small">
+                        <li><a class="dropdown-item" href="#">New project...</a></li>
+                        <li><a class="dropdown-item" href="#">Settings</a></li>
+                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Sign out</a></li>
+                    </ul>
+                </div> {% endcomment %}
+                {% comment %} <div class="col-1 text-end"></div>
+                </div> {% endcomment %}
+            </div>
+    </nav>
+    
+</header>

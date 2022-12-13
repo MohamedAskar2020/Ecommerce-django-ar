@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ar">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'css/bootstrap.css' %}"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'css/style.css' %}"
+      type="text/css"
+    />
+    <link rel="shortcut icon" href="{% static 'images/4085730.png' %}" />
+    <title>Khyial Store</title>
+  </head>
+  <body>
+    <!--Navebar Start -->
+    <!--Navebar End -->
+    <!--Main Start -->
+    {% block content %} 
+    
+    {% endblock content %}
+    <!--Main End -->
+
+    <!--Footer Start -->
+    <!--Footer End -->
+    <script src="{% static 'js/jquery-3.6.1.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+    <script src="{% static 'js/fontawesome-all.min.js' %}"></script>
+  </body>
+</html>
