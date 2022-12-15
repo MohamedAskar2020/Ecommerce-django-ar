@@ -23,10 +23,10 @@
                                 <img src="{{product_details.prdMainImage.url}}" class="img-thumbnail mb-5" alt="..."/>
                         </div>
                         <div class="carousel-item">
-                                <img src="{{product_details.prdMainImage.url}}" class="img-thumbnail" alt="..." />
+                                <img src="{{product_details.prdMainImage.url}}" class="img-thumbnail  mb-5" alt="..." />
                         </div>
                         <div class="carousel-item">
-                                <img src="{{product_details.prdMainImage.url}}" class="img-thumbnail" alt="..." />
+                                <img src="{{product_details.prdMainImage.url}}" class="img-thumbnail  mb-5" alt="..." />
                         </div>
                     </div>
                 <a class=" btn carousel-control-prev" type="button" data-target="#ProductsThumbnailSlider" data-slide="prev">
@@ -84,25 +84,39 @@
                     <div class="producttags mt-4">
                         <h5 class="">Tags</h5>
                         <p>
-                            <a href="#" class="badge bg-info text-white me-1">Python</a>
-                            <a href="#" class="badge bg-info text-white me-1">Django</a>
-                            <a href="#" class="badge bg-info text-white me-1">JavaScript</a>
-                            <a href="#" class="badge bg-info text-white me-1">Python</a>
-                            <a href="#" class="badge bg-info text-white me-1">Django</a>
-                            <a href="#" class="badge bg-info text-white me-1">JavaScript</a>
+                            <a href="#" class="badge bg-info text-white me-1">Shampoo</a>
+                            <a href="#" class="badge bg-info text-white me-1">Hair</a>
+                            <a href="#" class="badge bg-info text-white me-1">dandiruff</a>
+                            <a href="#" class="badge bg-info text-white me-1">Care</a>
+                            <a href="#" class="badge bg-info text-white me-1">Head</a>
+                            <a href="#" class="badge bg-info text-white me-1">Cream</a>
                         </p>
                     </div>
                 </div>
             </div>
-    <!--Grid row-->
-
     <hr />
-
-    <!--Grid row-->
+<!-- Comments Start -->
+<div class="my-3 p-3 bg-white rounded shadow-sm">
+    <h4 class="border-bottom border-gray pb-2 mb-0">التعليقات</h4>
+    {% for comment in comments %}
+    <div class="media text-muted pt-3">
+      <img class="bd-placeholder-img mr-2 rounded ml-2" width="32" height="32" src="{% static 'site_static/images/logo2.png' %}"/>
+        
+      <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+        <strong class="d-block text-gray-dark">{{comment.name}} في {{comment.comment_date|date:'d-m-Y'}}</strong>
+            {{comment.body}}
+      </p>
+    </div>
+    {% endfor %}
+    <small class="d-block text-right mt-3">
+      <a href="#">كل التعليقات</a>
+    </small>
+</div>
+<!-- Comments End -->
     <div class="row d-flex justify-content-center wow fadeIn">
       <!--Grid column-->
       <div class="col-md-6 text-center">
-    <h2 class="border btn-info mt-3 mb-4 text-center">منتجات مماثلة</h2>
+    <h2 class="border btn-info mt-3 mb-4 text-center">منتجات متعلقة</h2>
 
         <p>
 

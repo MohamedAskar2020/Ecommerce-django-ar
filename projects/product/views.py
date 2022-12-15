@@ -22,9 +22,11 @@ def products_list(request):
 def product_details(request, slug):
     # product_details = Product.objects.get(prdSlug=slug)
     product_details = get_object_or_404(Product, prdSlug=slug)
+    comments = product_details.comments.filter(active=True)
     context = {
         'title': product_details.prdSlug,
         'product_details': product_details,
+        'comments': comments,
         }
     return render(request, 'product/product_details.html', context)
 

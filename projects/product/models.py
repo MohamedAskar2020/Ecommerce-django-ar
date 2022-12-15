@@ -3,6 +3,7 @@ from django.conf import settings
 from django.utils.translation import gettext_lazy as _
 from django.utils.text import slugify
 from django.urls import reverse
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -140,3 +141,26 @@ class Variant(models.Model):
 
     def __str__(self):
         return str(self.varName)
+    
+#========================================================================================================
+
+class Comment(models.Model):
+
+    name = models.CharField(_("Name"), max_length=50)
+    email = models.EmailField(_("Email"))
+    body = models.TextField(_("Comment Text"))
+    comment_date = models.DateTimeField(auto_now_add=True)
+    active = models.BooleanField(_("active"), default=False)
+    product = models.ForeignKey(Product, related_name="comments", on_delete=models.CASCADE)
+
+    class Meta:
+        ordering = ('-comment_date',)
+        verbose_name = _("Comment")
+        verbose_name_plural = _("Comments")
+
+    def __str__(self):
+        return f"{self.name} --> ({self.product})"
+
+    def get_absolute_url(self):
+        return reverse("comment_detail", kwargs={"pk": self.pk})
+
