@@ -8,7 +8,7 @@ from .models import *
 def products_list(request):
 
     products_list = Product.objects.all()
-    paginator = Paginator(products_list, 2)
+    paginator = Paginator(products_list, 4)
 
     page_number = request.GET.get('page')
     products_list = paginator.get_page(page_number)
@@ -29,11 +29,16 @@ def product_details(request, slug):
 
 
 
-
+def home(request):
+    
+    products_list = Product.objects.all()
+    context = {
+        'products_list': products_list,
+    }
+    return render(request, 'product/home.html', context)
 
 def about(request):
     context={
-        'title': 'من نحن',
-        
+        'title': 'من نحن',  
     }
     return render(request, 'product/about.html', context)

@@ -1,17 +1,25 @@
         {% load static %}
         <div class="col-lg-3 col-md-6 mb-4">
-          
           <!--Card-->
           <div class="card">
             <!--Card image-->
 
             <div class="view overlay">
+              {% if prd.prdMainImage %}
               <img
                 class="card-img-top product_img"
                 style="max-height: 142px"
-                src="{% static 'site_static/images/slider1.jpg' %}"
+                src="{{prd.prdMainImage.url}}"
                 alt="Card image cap"
               />
+              {% else %}
+              <img
+                class="card-img-top product_img"
+                style="max-height: 142px"
+                src="{% static 'site_static/images/default.jpg' %}"
+                alt="Card image cap"
+              />
+              {% endif %}
               <a>
                 <div class="mask rgba-white-slight"></div>
               </a>
@@ -22,20 +30,40 @@
             <div class="card-body text-center">
               <!--Category & Title-->
               <a href="" class="grey-text">
-                <h5>Category</h5>
+                <h5>{{prd.prdCat}}</h5>
+                <h5>{{prd.prdVar}}</h5>
               </a>
               <h5>
                 <strong>
                   <a
                     href=""
                     class="dark-grey-text"
-                    >name
+                    >{{prd.prdName}}
                   </a>
+                  <p>
+                  {% if prd.prdDiscountPrice > 0 %}
+                  <span class="badge badge-success mr-1">SALE</span>
+
+                  {% endif %} {% if prd.prdIsNew %}
+
+                  <span class="badge badge-primary mr-1">New</span>
+
+                  {% endif %} {% if prd.prdIsBestSeller %}
+                  <span class="badge badge-danger mr-1">Bestseller</span>
+                  {% endif %}
+                  </p>
                 </strong>
               </h5>
 
               <h4 class="font-weight-bold blue-text">
-                <strong>price$</strong>
+            {% if prd.prdDiscountPrice > 0 %}
+            <span class="badge badge-secondary mr-2">
+              <del>SR {{prd.prdPrice}}</del>
+            </span>
+            <span class="badge badge-warning mr-2">SR {{prd.prdDiscountPrice}}</span>
+            {% else %}
+            <span class="badge badge-warning mr-1">SR {{prd.prdPrice}}</span>
+            {% endif %}
               </h4>
             </div>
             <!--Card content-->

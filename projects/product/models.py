@@ -10,10 +10,12 @@ from django.urls import reverse
 class Product(models.Model):
 
     prdName = models.CharField(max_length=100, verbose_name=_("Product Name"))
-    prdCat = models.ForeignKey('Category', on_delete=models.CASCADE,
-                               blank=True, null=True, verbose_name=_('Category'))
-    # prdBrd = models.ForeignKey('settings.Brand', on_delete=models.CASCADE,
-    #                            blank=True, null=True, verbose_name=_('product brand'))
+    prdCat = models.ForeignKey('Category', on_delete=models.CASCADE,blank=True, null=True,
+                            verbose_name=_('Category'))
+    prdBrd = models.ForeignKey('Brand', on_delete=models.CASCADE,
+                            blank=True, null=True, verbose_name=_('product brand'))
+    prdVar = models.ForeignKey('Variant', on_delete=models.CASCADE,
+                            blank=True, null=True, verbose_name=_('product variant'))
     prdDesc = models.TextField(verbose_name=_("Description"))
     prdMainImage = models.ImageField(
         upload_to='product\images\item', blank=True, null=True, verbose_name=_("Image"))
@@ -110,3 +112,31 @@ class Product_Accessories(models.Model):
 
     def __str__(self):
         return str(self.prdAccProduct)
+    
+#======================================================================================
+
+
+class Brand(models.Model):
+    brdName = models.CharField(max_length=50)
+    brdDesc = models.TextField(blank=True, null=True)
+
+    class Meta:
+        verbose_name = _("Brand")
+        verbose_name_plural = _("Brands")
+
+    def __str__(self):
+        return str(self.brdName)
+
+#==================================================
+
+
+class Variant(models.Model):
+    varName = models.CharField(max_length=50)
+    varDesc = models.TextField(blank=True, null=True)
+
+    class Meta:
+        verbose_name = _("Variant")
+        verbose_name_plural = _("Variants")
+
+    def __str__(self):
+        return str(self.varName)

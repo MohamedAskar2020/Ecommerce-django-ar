@@ -34,28 +34,29 @@
 </div>
 <!-- carousel End -->
 <main class="mt-5">
-    <h2 class="mt-3 mb-3 text-center">أحدث المنتجات</h2>
+    <h2 class="border btn-info mt-3 mb-4 text-center">
+      أحدث المنتجات
+      <a href="{% url 'products_list' %}" class="float-left btn btn-warning ml-2">
+          كل المنتجات <i class="fa fa-arrow-left"></i>
+      </a>
+    </h2>
   <div class="container mynav">
     <!--Section: Products v.3-->
     <section class="text-center mb-4">
       <!--Grid row-->
       <div class="row wow fadeIn">
         <!--Grid column-->
+        {% for prd in products_list|slice:':8' %}
         {% include 'card.html' %}
-        {% include 'card.html' %}
-        {% include 'card.html' %}
-        {% include 'card.html' %}
-        {% include 'card.html' %}
-        {% include 'card.html' %}
-        {% include 'card.html' %}
-        {% include 'card.html' %}
+        {% endfor %}
+
       </div>
       <!--Grid row-->
     </section>
     <!-- pagination Start -->
     
     <!-- pagination End -->
-    <h2 class="text-center">أشهر التصنيفات</h2>
+    <h2 class="border btn-info mt-3 mb-4 text-center">أشهر التصنيفات</h2>
     <div class="row text-center mt-5 mb-3">
 
       <div class="col-lg-4">
