@@ -29,7 +29,7 @@ class Product(models.Model):
     prdCreated = models.DateTimeField(verbose_name=_("Created Date"), auto_now_add=True)
 
     prdSlug = models.SlugField(
-        blank=True, null=True, verbose_name=_("Product Url"))
+        blank=True, null=True, verbose_name=_("Product Url"), unique=True)
     prdIsNew = models.BooleanField(default=True, verbose_name=_("New Product"))
     prdIsBestSeller = models.BooleanField(
         default=False, verbose_name=_("Best Seller"))

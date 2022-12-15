@@ -13,6 +13,7 @@ def products_list(request):
     page_number = request.GET.get('page')
     products_list = paginator.get_page(page_number)
     context = {
+        'title': 'كل المنتجات',
         'products_list': products_list,
         }
     return render(request, 'product/all_products.html', context)
@@ -22,6 +23,7 @@ def product_details(request, slug):
     # product_details = Product.objects.get(prdSlug=slug)
     product_details = get_object_or_404(Product, prdSlug=slug)
     context = {
+        'title': product_details.prdSlug,
         'product_details': product_details,
         }
     return render(request, 'product/product_details.html', context)
