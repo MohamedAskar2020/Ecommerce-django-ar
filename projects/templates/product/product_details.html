@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
 {% block content %}
 <body>
 {% include 'navbar.html' %}
@@ -96,27 +97,34 @@
             </div>
     <hr />
 <!-- Comments Start -->
-<div class="my-3 p-3 bg-white rounded shadow-sm">
-    <h4 class="border-bottom border-gray pb-2 mb-0">التعليقات</h4>
+    <h2 class="border-bottom mt-5 mb-3">التعليقات ({{comments.count}})</h2>
     {% for comment in comments %}
-    <div class="media text-muted pt-3">
+    <div class="media pt-3">
       <img class="bd-placeholder-img mr-2 rounded ml-2" width="32" height="32" src="{% static 'site_static/images/logo2.png' %}"/>
         
       <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-        <strong class="d-block text-gray-dark">{{comment.name}} في {{comment.comment_date|date:'d-m-Y'}}</strong>
+        <strong class="d-block text-gray-dark ">{{comment.name}} في {{comment.comment_date|date:'d-m-Y'}}       
+        </strong>
             {{comment.body}}
       </p>
     </div>
     {% endfor %}
-    <small class="d-block text-right mt-3">
+    <!-- <small class="d-block text-right mt-3">
       <a href="#">كل التعليقات</a>
-    </small>
+    </small> -->
+<h3 class="border-bottom mt-5 pb-3 mb-3">إضافة تعليق</h3>
+<div class="">
+<form class="border p-4 mb-5 mt-4" method="POST">
+  {% csrf_token %}
+  {{comment_form|crispy}} 
+  <input class="btn btn-primary mb-4" type="submit" value="نشر">
+</form>
 </div>
 <!-- Comments End -->
     <div class="row d-flex justify-content-center wow fadeIn">
       <!--Grid column-->
       <div class="col-md-6 text-center">
-    <h2 class="border btn-info mt-3 mb-4 text-center">منتجات متعلقة</h2>
+    <h2 class="border btn-info mt-3 text-center">منتجات متعلقة</h2>
 
         <p>
 

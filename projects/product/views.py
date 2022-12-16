@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
 from .models import *
+from .forms import NewComment
 
 # Create your views here.
 
@@ -23,10 +24,20 @@ def product_details(request, slug):
     # product_details = Product.objects.get(prdSlug=slug)
     product_details = get_object_or_404(Product, prdSlug=slug)
     comments = product_details.comments.filter(active=True)
+    if request.method == 'POST':
+        comment_form = NewComment(data=request.POST)
+        if comment_form.is_valid():
+            new_comment = comment_form.save(commit=False)
+            new_comment.product = product_details
+            new_comment.save()
+            comment_form = NewComment()
+    else:
+        comment_form = NewComment()
     context = {
         'title': product_details.prdSlug,
         'product_details': product_details,
         'comments': comments,
+        'comment_form': comment_form,
         }
     return render(request, 'product/product_details.html', context)
 
@@ -46,3 +57,4 @@ def about(request):
         'title': 'من نحن',  
     }
     return render(request, 'product/about.html', context)
+

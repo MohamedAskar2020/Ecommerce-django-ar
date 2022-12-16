@@ -11,3 +11,7 @@ html, body {
     direction: rtl;
     text-align: right;
 }
+.comment {
+    background-attachment: #f8f8f8 !important;
+    border: 1px dashed #ccc !important;
+}

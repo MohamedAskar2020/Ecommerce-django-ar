@@ -146,9 +146,9 @@ class Variant(models.Model):
 
 class Comment(models.Model):
 
-    name = models.CharField(_("Name"), max_length=50)
-    email = models.EmailField(_("Email"))
-    body = models.TextField(_("Comment Text"))
+    name = models.CharField(_("الاسم"), max_length=50)
+    email = models.EmailField(_("البريد الالكتروني"))
+    body = models.TextField(_("التعليق"))
     comment_date = models.DateTimeField(auto_now_add=True)
     active = models.BooleanField(_("active"), default=False)
     product = models.ForeignKey(Product, related_name="comments", on_delete=models.CASCADE)
