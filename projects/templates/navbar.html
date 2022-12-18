@@ -26,26 +26,33 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'about' %}">من نحن</a>
                 </li>
+                {% if user.is_authenticated %}
+                <li class="nav-item mr-2">
+                    <a class="nav-link active" href="#"><i class="fas fa-shopping-cart fa-2x"></i></a>
+                </li>
+                {% endif %}
                 </ul>
                 </div>
-                <div class="my-2 my-lg-0">
-                    <button type="button" class="btn btn-outline-danger me-2">تسجيل الدخول</button>
-                    <button type="button" class="btn btn-warning">تسجيل</button>
-                </div> 
-                {% comment %} <div class="dropdown my-2 my-lg-0 mr-5">
+                {% if user.is_authenticated %}
+                <div class="dropdown my-2 my-lg-0 mr-5">
                     <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+                    <img src="{% static 'site_static/images/logo3.png' %}" alt="mdo" width="32" height="32" class="rounded-circle">
                     </a>
-                    <ul class="dropdown-menu text-left  text-small">
-                        <li><a class="dropdown-item" href="#">New project...</a></li>
-                        <li><a class="dropdown-item" href="#">Settings</a></li>
-                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                    <ul class="dropdown-menu text-right  text-small">
+                        <li><a class="dropdown-item" href="#">طلباتي</a></li>
+                        <li><a class="dropdown-item" href="#">المفضلة</a></li>
+                        <li><a class="dropdown-item" href="{% url 'profile' %}">الملف الشخصي</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">Sign out</a></li>
+                        <li><a class="dropdown-item" href="{% url 'logout' %}">تسجيل الخروج</a></li>
                     </ul>
-                </div> {% endcomment %}
-                {% comment %} <div class="col-1 text-end"></div>
-                </div> {% endcomment %}
+                </div> 
+                {% else %}
+                <div class="my-2 my-lg-0">
+                    <a href="{% url 'login' %}" type="button" class="btn btn-outline-danger me-2">تسجيل الدخول</a>
+                    <a href="{% url 'register' %}" type="button" class="btn btn-warning">تسجيل</a>
+                </div> 
+                {% endif %}
+
             </div>
     </nav>
 </header>

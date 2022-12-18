@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'product.apps.ProductConfig', 
     'accounts.apps.AccountsConfig',
+    'orders.apps.OrdersConfig',
     'crispy_forms',
 ]
 
@@ -132,3 +133,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+LOGIN_REDIRECT_URL = 'home'
+LOGIN_URL = 'login'
